@@ -44,7 +44,6 @@
           'bg-green-darken-2': employee.employee_salary < 100000,
           'bg-red-darken-2': employee.employee_salary > 500000}"
         >
-        {{ salary_from }}
           <td >{{ employee.employee_name }}</td>
           <td>{{ employee.employee_age }}</td>
           <td>{{ employee.employee_salary }} €
