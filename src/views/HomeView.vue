@@ -59,6 +59,7 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import { computed, onMounted, reactive,ref } from 'vue'
 
 /**Data */
@@ -101,6 +102,23 @@ let employees_list =
   })
 
   return employees
+})
+
+ /**
+ * Lifecycle
+ */
+
+ onMounted(async () => {
+  await axios
+    .get('https://vip.regardervideos.com/api/main/get_employees', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+    })
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error))
 })
 
 </script>
