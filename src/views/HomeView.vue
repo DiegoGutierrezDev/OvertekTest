@@ -3,15 +3,15 @@
       <p>Filtros:</p>
       <div class="bg-cyan-darken-3 d-flex align-md-center">
 
-        <label for="salary_from" class="mr-2">
-          Salario desde: 
-        </label>
-          <input id="salary_from" type="number" v-model="filters.salary_from" class="text-white border-md rounded-pill mr-2 bg-cyan-darken-4" />
+      <label for="salary_from" class="mr-2">
+        Salario desde: 
+      </label>
+      <input id="salary_from" type="number" v-model="filters.salary_from" class="text-white border-md rounded-pill mr-2 bg-cyan-darken-4" />
 
-          <label for="salary_to" class="mr-2">
-            Salario hasta: 
-          </label>
-            <input id="salary_to" type="number" v-model="filters.salary_to" class="text-white border-md rounded-pill mr-2 bg-cyan-darken-4" />
+      <label for="salary_to" class="mr-2">
+        Salario hasta: 
+      </label>
+        <input id="salary_to" type="number" v-model="filters.salary_to" class="text-white border-md rounded-pill mr-2 bg-cyan-darken-4" />
 
       <label for="ages" class="mr-2"> Edad: </label>
       <select id="ages" class="d-flex text-white bg-cyan-darken-4" v-model="filters.age">
@@ -20,6 +20,7 @@
         </option>
       </select>
       </div>
+
     <div v-if="!filteredEmployees.length">No existen empleados con el criterio de búsqueda</div>
     <v-table v-else theme="dark">
       <thead>
@@ -36,6 +37,7 @@
           <th></th>
         </tr>
       </thead>
+
       <tbody>
         <tr
           v-for="employee in filteredEmployees"
@@ -44,15 +46,18 @@
           'bg-green-darken-2': employee.employee_salary < 100000,
           'bg-red-darken-2': employee.employee_salary > 500000}"
         >
+
           <td >{{ employee.employee_name }}</td>
           <td>{{ employee.employee_age }}</td>
-          <td>{{ employee.employee_salary }} €
-          </td>
+          <td>{{ employee.employee_salary }} €</td>
+
           <div v-if="employee.employee_salary > 500000" height="24px" width="24px" class="d-flex align-center justify-content">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" height="24px" width="24px">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-            </svg>
-            </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" height="24px" width="24px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+
+          </div>
+            <td v-else></td>
         </tr>
       </tbody>
     </v-table>
@@ -60,7 +65,7 @@
 
 <script setup>
 import axios from 'axios';
-import { computed, onMounted, reactive,ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 /**Data */
 const filters = ref({
