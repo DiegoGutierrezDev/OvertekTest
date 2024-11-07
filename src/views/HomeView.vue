@@ -66,8 +66,8 @@ const filters = ref({
   salary_from: 0,
   salary_to: 10000000,
   age: {
-    from: 30,
-    to: 35
+    from: 0,
+    to: 100
   }
 
 })
