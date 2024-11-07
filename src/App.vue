@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import CustomHeader from './components/customHeader.vue';
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
       </nav>
     </div>
   </header>
+  <CustomHeader></CustomHeader>
 
   <RouterView />
 </template>
