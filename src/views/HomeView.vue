@@ -39,9 +39,13 @@
         <tr
           v-for="employee in filteredEmployees"
           :key="employee.id"
+          :class="{
+          'bg-green-darken-2': employee.employee_salary < 100000,
+          'bg-red-darken-2': employee.employee_salary > 500000}"
         >
         {{ salary_from }}
-          <td>{{ employee.employee_name }}</td>
+          <td 
+          >{{ employee.employee_name }}</td>
           <td>{{ employee.employee_age }}</td>
           <td>{{ employee.employee_salary }} €</td>
         </tr>
@@ -57,8 +61,8 @@ const filters = ref({
   salary_from: 0,
   salary_to: 10000000,
   age: {
-    from: 0,
-    to: 0,
+    from: 30,
+    to: 35
   }
 
 })
@@ -85,7 +89,7 @@ let employees_list =
   let employees = employees_list.filter((employee) => {
     return (
       (employee.employee_salary >= filters.value.salary_from &&
-      employee.employee_salary <= filters.value.salary_to) ||
+      employee.employee_salary <= filters.value.salary_to) &&
       (employee.employee_age >= filters.value.age.from &&
       employee.employee_age <= filters.value.age.to)
     )
@@ -94,7 +98,4 @@ let employees_list =
   return employees
 })
 
-const filteredAges = computed(() => {
-  
-})
 </script>
